@@ -1,6 +1,6 @@
 """
 🦠 EchoLens - AI Pandemic Predictor
-Sleek Streamlit Dashboard
+Sleek Streamlit Dashboard with Groq API
 
 Run: streamlit run app.py
 """
@@ -8,7 +8,7 @@ Run: streamlit run app.py
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
-from grok_client import EchoLensAI
+from groq_client import EchoLensAI
 import json
 from datetime import datetime
 
@@ -142,11 +142,6 @@ st.markdown("""
         box-shadow: 0 7px 20px rgba(102, 126, 234, 0.6);
     }
     
-    /* Sidebar */
-    .css-1d391kg {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-    }
-    
     /* Historical Data Cards */
     .pandemic-card {
         background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
@@ -172,6 +167,16 @@ st.markdown("""
         color: white;
         border-radius: 8px;
         font-weight: 600;
+    }
+    
+    /* Analysis Container */
+    .analysis-text {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        line-height: 1.8;
+        margin: 1rem 0;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -245,13 +250,13 @@ with st.sidebar:
     st.info("""
     **EchoLens** uses advanced AI to predict pandemic outbreaks by analyzing historical epidemic patterns.
     
-    **Powered by:** Grok API  
-    **Model:** GPT OSS 120B
+    **Powered by:** Groq API  
+    **Model:** Llama 3.1 70B
     """)
     
     st.markdown("---")
     st.markdown("**Built by** [@A-P-U-R-B-O](https://github.com/A-P-U-R-B-O)")
-    st.markdown(f"**Last Updated:** {datetime.now().strftime('%Y-%m-%d')}")
+    st.markdown("**Last Updated:** 2025-11-08")
 
 # ============================================================================
 # MAIN CONTENT
@@ -262,7 +267,13 @@ try:
     ai = EchoLensAI()
 except ValueError as e:
     st.error(str(e))
-    st.info("💡 **Setup Instructions:**\n1. Create a `.env` file\n2. Add: `GROK_API_KEY=your_key_here`\n3. Restart the app")
+    st.info("""💡 **Setup Instructions:**
+    
+1. Get free API key from [console.groq.com](https://console.groq.com)
+2. Create a `.env` file in project root
+3. Add: `GROQ_API_KEY=your_key_here`
+4. Restart the app
+    """)
     st.stop()
 
 # Quick Risk Check
@@ -279,17 +290,19 @@ if quick_btn:
                 st.markdown(f"""
                 <div class="info-card">
                     <h3>📊 Risk Summary for {region}</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.6;">{quick_result}</p>
+                    <div class="analysis-text">{quick_result}</div>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col2:
                 st.metric("Active Cases", f"{current_cases:,}")
+                st.metric("Forecast Period", f"{forecast_days} days")
             
             st.success("✅ Quick assessment complete!")
             
         except Exception as e:
             st.error(f"❌ Error: {str(e)}")
+            st.info("💡 Check your Groq API key and internet connection.")
 
 # Full Prediction
 if predict_btn:
@@ -322,9 +335,6 @@ if predict_btn:
         # DISPLAY RESULTS
         # ========================================================================
         
-        # Parse prediction to extract key metrics (simple parsing)
-        lines = prediction.split('\n')
-        
         # Display full prediction in a nice box
         st.markdown(f"""
         <div class="prediction-box">
@@ -336,9 +346,13 @@ if predict_btn:
         # Main prediction content
         with st.container():
             st.markdown("### 🎯 AI Analysis")
-            st.markdown(prediction)
+            st.markdown(f"""
+            <div class="analysis-text">
+                {prediction.replace('\n', '<br>')}
+            </div>
+            """, unsafe_allow_html=True)
         
-        # Visual metrics (mock data for demonstration)
+        # Visual metrics
         st.markdown("---")
         st.markdown("### 📊 Visual Analytics")
         
@@ -454,7 +468,7 @@ if predict_btn:
             st.markdown(f"""
             <div class="info-card">
                 <h3>📚 Historical Analysis</h3>
-                <p style="line-height: 1.8;">{comparison}</p>
+                <div class="analysis-text">{comparison.replace(chr(10), '<br>')}</div>
             </div>
             """, unsafe_allow_html=True)
         
@@ -462,10 +476,28 @@ if predict_btn:
         
         # Download report
         st.markdown("---")
+        report_content = f"""EchoLens Prediction Report
+Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC
+
+Region: {region}
+Active Cases: {current_cases:,}
+Forecast Period: {forecast_days} days
+
+=== PREDICTION ===
+{prediction}
+
+=== HISTORICAL COMPARISON ===
+{comparison}
+
+---
+Built by @A-P-U-R-B-O
+Powered by Groq API (Llama 3.1 70B)
+"""
+        
         st.download_button(
             label="📥 Download Prediction Report",
-            data=f"EchoLens Prediction Report\n\nRegion: {region}\nCases: {current_cases}\nForecast: {forecast_days} days\n\n{prediction}\n\nHistorical Comparison:\n{comparison}",
-            file_name=f"echolens_report_{region.replace(' ', '_')}_{datetime.now().strftime('%Y%m%d')}.txt",
+            data=report_content,
+            file_name=f"echolens_report_{region.replace(' ', '_')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
             mime="text/plain"
         )
         
@@ -473,7 +505,7 @@ if predict_btn:
         progress_text.empty()
         progress_bar.empty()
         st.error(f"❌ Error generating prediction: {str(e)}")
-        st.info("💡 Make sure your Grok API key is valid and you have credits available.")
+        st.info("💡 Make sure your Groq API key is valid and you have an active internet connection.")
 
 # ============================================================================
 # HISTORICAL DATA SECTION
@@ -518,9 +550,59 @@ if not predict_btn and not quick_btn:
                     ))
                     fig.update_layout(height=200, margin=dict(l=20, r=20, t=50, b=20))
                     st.plotly_chart(fig, use_container_width=True)
+        
+        # Comparison chart
+        st.markdown("---")
+        st.markdown("### 📊 Pandemic Comparison")
+        
+        # Create comparison data
+        names = [p['name'] for p in pandemics]
+        mortality_rates = [p.get('mortality_rate', 0) for p in pandemics]
+        
+        fig3 = go.Figure(data=[
+            go.Bar(
+                x=names,
+                y=mortality_rates,
+                marker=dict(
+                    color=mortality_rates,
+                    colorscale='Reds',
+                    showscale=True
+                ),
+                text=mortality_rates,
+                texttemplate='%{text}%',
+                textposition='outside'
+            )
+        ])
+        
+        fig3.update_layout(
+            title="Historical Pandemic Mortality Rates",
+            xaxis_title="Pandemic",
+            yaxis_title="Mortality Rate (%)",
+            height=400,
+            showlegend=False
+        )
+        
+        st.plotly_chart(fig3, use_container_width=True)
     
     except FileNotFoundError:
         st.info("📁 No historical data found. Create `data/pandemics.json` to see historical pandemic information.")
+        
+        # Show sample structure
+        with st.expander("📖 Sample Data Structure"):
+            st.code('''[
+  {
+    "name": "COVID-19",
+    "period": "2019-2023",
+    "pathogen": "SARS-CoV-2",
+    "deaths": "6.9+ million",
+    "mortality_rate": 2,
+    "transmission": "Respiratory droplets, airborne",
+    "lessons": [
+      "Early detection crucial",
+      "Global cooperation essential"
+    ]
+  }
+]''', language='json')
 
 # ============================================================================
 # FOOTER
@@ -531,9 +613,12 @@ st.markdown("""
     <h3 style="color: #667eea;">🦠 EchoLens</h3>
     <p>Helping humanity prepare for future pandemics through AI-powered predictions</p>
     <p style="font-size: 0.9rem; color: #999;">
-        Built by <a href="https://github.com/A-P-U-R-B-O" target="_blank">@A-P-U-R-B-O</a> • 
-        Powered by Grok API • 
+        Built by <a href="https://github.com/A-P-U-R-B-O" target="_blank" style="color: #667eea; text-decoration: none;">@A-P-U-R-B-O</a> • 
+        Powered by Groq API (Llama 3.1 70B) • 
         2025-11-08
+    </p>
+    <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;">
+        ⚠️ Disclaimer: This is a research tool. Consult epidemiologists for public health decisions.
     </p>
 </div>
 """, unsafe_allow_html=True)
