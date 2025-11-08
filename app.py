@@ -36,6 +36,18 @@ st.markdown("""
     * {
         font-family: 'Inter', sans-serif;
     }
+        /* FIX: Force all text in the main content area to be dark if background is light */
+    .stApp > header, .stApp > div {
+        color: #333333; /* Dark text for all general content */
+    }
+    /* Specifically target elements that Streamlit renders as inputs/containers in the main body */
+    .stTextInput > div > div > input,
+    .stTextArea > div > textarea,
+    .stEmpty {
+        background-color: white !important; /* Force a white background */
+        color: #333333 !important; /* Force dark text */
+    }
+    
     
     /* Hide Streamlit Branding */
     #MainMenu {visibility: hidden;}
