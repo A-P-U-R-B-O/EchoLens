@@ -100,7 +100,7 @@ st.markdown("""
         box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
     
-    /* Prediction Box */
+    /* Prediction Box (Outer Header) */
     .prediction-box {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         padding: 2rem;
@@ -110,7 +110,7 @@ st.markdown("""
         box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     }
     
-    /* Info Cards */
+    /* Info Cards (Historical/Quick Risk Wrapper) */
     .info-card {
         background: white;
         padding: 1.5rem;
@@ -123,6 +123,22 @@ st.markdown("""
     .info-card h3 {
         color: #667eea;
         margin-top: 0;
+    }
+    
+    /* Analysis Text Container (AI Response Wrapper) */
+    .analysis-text {
+        background: white; /* Result background color set to white */
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        line-height: 1.8;
+        margin: 1rem 0;
+        color: #333333; /* FIX: Force text color to black/dark gray */
+    }
+
+    /* Streamlit components inside custom divs should also be dark */
+    .analysis-text * {
+        color: #333333;
     }
     
     /* Buttons */
@@ -169,15 +185,6 @@ st.markdown("""
         font-weight: 600;
     }
     
-    /* Analysis Container */
-    .analysis-text {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 10px;
-        border-left: 4px solid #667eea;
-        line-height: 1.8;
-        margin: 1rem 0;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -251,12 +258,12 @@ with st.sidebar:
     **EchoLens** uses advanced AI to predict pandemic outbreaks by analyzing historical epidemic patterns.
     
     **Powered by:** Groq API  
-    **Model:** Llama 3.1 70B
+    **Model:** openai/gpt-oss-120b (Note: This is a Groq-hosted open-source model)
     """)
     
     st.markdown("---")
     st.markdown("**Built by** [@A-P-U-R-B-O](https://github.com/A-P-U-R-B-O)")
-    st.markdown("**Last Updated:** 2025-11-08")
+    st.markdown(f"**Last Updated:** {datetime.now().strftime('%Y-%m-%d')}")
 
 # ============================================================================
 # MAIN CONTENT
@@ -272,7 +279,8 @@ except ValueError as e:
 1. Get free API key from [console.groq.com](https://console.groq.com)
 2. Create a `.env` file in project root
 3. Add: `GROQ_API_KEY=your_key_here`
-4. Restart the app
+4. **Fix Dependencies:** Run `pip install httpx==0.27.2` to resolve the `TypeError: proxies` issue.
+5. Restart the app
     """)
     st.stop()
 
@@ -287,12 +295,12 @@ if quick_btn:
             col1, col2 = st.columns([2, 1])
             
             with col1:
-                st.markdown(f"""
-                <div class="info-card">
-                    <h3>📊 Risk Summary for {region}</h3>
-                    <div class="analysis-text">{quick_result}</div>
-                </div>
-                """, unsafe_allow_html=True)
+                # FIX: Use HTML for outer container, st.markdown for content
+                st.markdown('<div class="info-card">', unsafe_allow_html=True)
+                st.markdown(f'<h3>📊 Risk Summary for {region}</h3>', unsafe_allow_html=True)
+                st.markdown('<div class="analysis-text">', unsafe_allow_html=True)
+                st.markdown(quick_result) # Render markdown/LaTeX correctly
+                st.markdown('</div></div>', unsafe_allow_html=True)
             
             with col2:
                 st.metric("Active Cases", f"{current_cases:,}")
@@ -302,7 +310,7 @@ if quick_btn:
             
         except Exception as e:
             st.error(f"❌ Error: {str(e)}")
-            st.info("💡 Check your Groq API key and internet connection.")
+            st.info("💡 Check your Groq API key, dependencies (httpx fix), and internet connection.")
 
 # Full Prediction
 if predict_btn:
@@ -346,17 +354,19 @@ if predict_btn:
         # Main prediction content
         with st.container():
             st.markdown("### 🎯 AI Analysis")
-            st.markdown(f"""
-            <div class="analysis-text">
-                {prediction.replace('\n', '<br>')}
-            </div>
-            """, unsafe_allow_html=True)
+            
+            # FIX: Use HTML for outer container, st.markdown for content
+            st.markdown('<div class="analysis-text">', unsafe_allow_html=True)
+            st.markdown(prediction) # Render markdown/LaTeX correctly
+            st.markdown('</div>', unsafe_allow_html=True)
         
         # Visual metrics
         st.markdown("---")
         st.markdown("### 📊 Visual Analytics")
         
         col1, col2, col3, col4 = st.columns(4)
+        
+        st.caption("Note: Metric values below are currently hardcoded; they need to be dynamically parsed from the AI response.")
         
         with col1:
             st.markdown("""
@@ -399,9 +409,10 @@ if predict_btn:
         col1, col2 = st.columns([1, 1])
         
         with col1:
+            # Note: Hardcoded value 72 used below
             fig = go.Figure(go.Indicator(
                 mode="gauge+number+delta",
-                value=72,
+                value=72, 
                 domain={'x': [0, 1], 'y': [0, 1]},
                 title={'text': "Overall Risk Score", 'font': {'size': 24}},
                 delta={'reference': 50, 'increasing': {'color': "red"}},
@@ -434,7 +445,7 @@ if predict_btn:
             st.plotly_chart(fig, use_container_width=True)
         
         with col2:
-            # Probability trend
+            # Probability trend (Note: Hardcoded values 45, 67, 78 used below)
             fig2 = go.Figure()
             
             fig2.add_trace(go.Scatter(
@@ -465,12 +476,12 @@ if predict_btn:
         with st.spinner("🤖 Comparing to historical pandemics..."):
             comparison = ai.analyze_comparison(f"Region: {region}, Cases: {current_cases}")
             
-            st.markdown(f"""
-            <div class="info-card">
-                <h3>📚 Historical Analysis</h3>
-                <div class="analysis-text">{comparison.replace(chr(10), '<br>')}</div>
-            </div>
-            """, unsafe_allow_html=True)
+            # FIX: Use HTML for outer container, st.markdown for content
+            st.markdown('<div class="info-card">', unsafe_allow_html=True)
+            st.markdown('<h3>📚 Historical Analysis</h3>', unsafe_allow_html=True)
+            st.markdown('<div class="analysis-text">', unsafe_allow_html=True)
+            st.markdown(comparison) # Render markdown/LaTeX correctly
+            st.markdown('</div></div>', unsafe_allow_html=True)
         
         st.success("✅ Full prediction analysis complete!")
         
@@ -516,10 +527,16 @@ if not predict_btn and not quick_btn:
     st.markdown("## 📚 Historical Pandemic Database")
     
     # Load historical data
+    # Create a dummy data structure if the file doesn't exist to prevent a full crash
+    pandemics = []
     try:
         with open('data/pandemics.json', 'r') as f:
             pandemics = json.load(f)
-        
+    except FileNotFoundError:
+        st.info("📁 No historical data found. See Sample Data Structure below.")
+        pandemics = []
+
+    if pandemics:
         # Create tabs for each pandemic
         tabs = st.tabs([p['name'] for p in pandemics])
         
@@ -584,24 +601,21 @@ if not predict_btn and not quick_btn:
         
         st.plotly_chart(fig3, use_container_width=True)
     
-    except FileNotFoundError:
-        st.info("📁 No historical data found. Create `data/pandemics.json` to see historical pandemic information.")
-        
-        # Show sample structure
-        with st.expander("📖 Sample Data Structure"):
-            st.code('''[
-  {
-    "name": "COVID-19",
-    "period": "2019-2023",
-    "pathogen": "SARS-CoV-2",
-    "deaths": "6.9+ million",
-    "mortality_rate": 2,
-    "transmission": "Respiratory droplets, airborne",
-    "lessons": [
-      "Early detection crucial",
-      "Global cooperation essential"
-    ]
-  }
+    # Show sample structure whether data was found or not
+    with st.expander("📖 Sample Data Structure"):
+        st.code('''[
+{
+"name": "COVID-19",
+"period": "2019-2023",
+"pathogen": "SARS-CoV-2",
+"deaths": "6.9+ million",
+"mortality_rate": 2,
+"transmission": "Respiratory droplets, airborne",
+"lessons": [
+  "Early detection crucial",
+  "Global cooperation essential"
+]
+}
 ]''', language='json')
 
 # ============================================================================
@@ -614,8 +628,7 @@ st.markdown("""
     <p>Helping humanity prepare for future pandemics through AI-powered predictions</p>
     <p style="font-size: 0.9rem; color: #999;">
         Built by <a href="https://github.com/A-P-U-R-B-O" target="_blank" style="color: #667eea; text-decoration: none;">@A-P-U-R-B-O</a> • 
-        Powered by Groq API (Llama 3.1 70B) • 
-        2025-11-08
+        Powered by Groq API
     </p>
     <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;">
         ⚠️ Disclaimer: This is a research tool. Consult epidemiologists for public health decisions.
