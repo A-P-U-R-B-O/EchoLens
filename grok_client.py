@@ -1,26 +1,24 @@
 """
-EchoLens - Grok API Client
-Simple wrapper for pandemic predictions
+EchoLens - Groq API Client
+Fast AI predictions using Groq's lightning-fast inference
 """
 
 import os
-from openai import OpenAI
+from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
 
 class EchoLensAI:
-    """Simple Grok API client for pandemic predictions"""
+    """Simple Groq API client for pandemic predictions"""
     
     def __init__(self):
-        api_key = os.getenv('GROK_API_KEY')
+        api_key = os.getenv('GROQ_API_KEY')
         if not api_key:
-            raise ValueError("❌ GROK_API_KEY not found! Add it to .env file")
+            raise ValueError("❌ GROQ_API_KEY not found! Add it to .env file")
         
-        self.client = OpenAI(
-            api_key=api_key,
-            base_url="https://api.x.ai/v1"
-        )
+        self.client = Groq(api_key=api_key)
+        self.model = "openai/gpt-oss-120b"  # Fast and powerful
     
     def predict_outbreak(self, region, current_cases, forecast_days=90):
         """Predict pandemic outbreak for a region"""
@@ -53,17 +51,25 @@ Format your response clearly with headers and bullet points.
 Be specific with numbers and probabilities.
 Base predictions on historical epidemic patterns."""
 
-        response = self.client.chat.completions.create(
-            model="grok-beta",
+        chat_completion = self.client.chat.completions.create(
             messages=[
-                {"role": "system", "content": "You are EchoLens, an expert epidemiologist AI."},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": "You are EchoLens, an expert epidemiologist AI specialized in pandemic prediction."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
             ],
+            model=self.model,
             temperature=0.7,
-            max_tokens=2000
+            max_tokens=2000,
+            top_p=1,
+            stream=False
         )
         
-        return response.choices[0].message.content
+        return chat_completion.choices[0].message.content
     
     def analyze_comparison(self, current_outbreak):
         """Compare current situation to historical pandemics"""
@@ -83,17 +89,23 @@ Which historical pandemic does this most resemble and why?
 What lessons from that pandemic apply here?
 What's the likely outcome based on historical patterns?"""
 
-        response = self.client.chat.completions.create(
-            model="grok-beta",
+        chat_completion = self.client.chat.completions.create(
             messages=[
-                {"role": "system", "content": "You are a pandemic historian and epidemiologist."},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": "You are a pandemic historian and epidemiologist."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
             ],
+            model=self.model,
             temperature=0.7,
             max_tokens=1500
         )
         
-        return response.choices[0].message.content
+        return chat_completion.choices[0].message.content
     
     def get_quick_risk(self, region, cases):
         """Get quick risk assessment"""
@@ -107,11 +119,16 @@ Provide ONLY:
 
 Be concise."""
 
-        response = self.client.chat.completions.create(
-            model="grok-beta",
-            messages=[{"role": "user", "content": prompt}],
+        chat_completion = self.client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            model=self.model,
             temperature=0.5,
             max_tokens=200
         )
         
-        return response.choices[0].message.content
+        return chat_completion.choices[0].message.content
