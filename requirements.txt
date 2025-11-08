@@ -8,3 +8,4 @@ groq==0.11.0
 # Visualization
 plotly==5.17.0
 streamlit-extras==0.3.6
+httpx==0.27.2
