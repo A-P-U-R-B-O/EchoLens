@@ -5,7 +5,6 @@
 ![EchoLens Banner](https://img.shields.io/badge/EchoLens-Pandemic%20Predictor-blueviolet?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq_API-Llama_3.1_70B-purple?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 **Predict Future Pandemics Using Historical Epidemic Patterns**
