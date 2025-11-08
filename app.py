@@ -619,13 +619,19 @@ if not predict_btn and not quick_btn:
 ]''', language='json')
 
 # ============================================================================
-@@ -614,8 +628,7 @@
+# FOOTER
+# ============================================================================
+
+st.markdown("""
+<div class="custom-footer">
+    <h3 style="color: #667eea;">🦠 EchoLens</h3>
     <p>Helping humanity prepare for future pandemics through AI-powered predictions</p>
     <p style="font-size: 0.9rem; color: #999;">
         Built by <a href="https://github.com/A-P-U-R-B-O" target="_blank" style="color: #667eea; text-decoration: none;">@A-P-U-R-B-O</a> • 
-        Powered by Groq API (Llama 3.1 70B) • 
-        2025-11-08
         Powered by Groq API
     </p>
     <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;">
         ⚠️ Disclaimer: This is a research tool. Consult epidemiologists for public health decisions.
+    </p>
+</div>
+""", unsafe_allow_html=True)
