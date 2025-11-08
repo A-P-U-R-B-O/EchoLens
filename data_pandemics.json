@@ -1,0 +1,55 @@
+[
+  {
+    "name": "Black Death",
+    "period": "1347-1353",
+    "pathogen": "Yersinia pestis (Bubonic plague)",
+    "deaths": "75-200 million",
+    "mortality_rate": 50,
+    "transmission": "Flea bites from infected rats, human-to-human",
+    "lessons": [
+      "Quarantine measures can slow spread",
+      "Trade routes accelerate transmission",
+      "Poor sanitation increases risk"
+    ]
+  },
+  {
+    "name": "Spanish Flu",
+    "period": "1918-1920",
+    "pathogen": "H1N1 influenza virus",
+    "deaths": "50-100 million",
+    "mortality_rate": 10,
+    "transmission": "Respiratory droplets, airborne",
+    "lessons": [
+      "Second wave can be deadlier",
+      "Public gatherings spread disease",
+      "Young adults surprisingly vulnerable"
+    ]
+  },
+  {
+    "name": "SARS",
+    "period": "2002-2004",
+    "pathogen": "SARS-CoV coronavirus",
+    "deaths": "774",
+    "mortality_rate": 10,
+    "transmission": "Respiratory droplets, close contact",
+    "lessons": [
+      "Early detection crucial",
+      "Contact tracing works",
+      "Global cooperation essential"
+    ]
+  },
+  {
+    "name": "COVID-19",
+    "period": "2019-2023",
+    "pathogen": "SARS-CoV-2 coronavirus",
+    "deaths": "6.9+ million",
+    "mortality_rate": 2,
+    "transmission": "Respiratory droplets, airborne, surfaces",
+    "lessons": [
+      "Asymptomatic spread is dangerous",
+      "Vaccines can be developed rapidly",
+      "Lockdowns buy time for preparation",
+      "Mental health impacts significant"
+    ]
+  }
+]
