@@ -36,18 +36,6 @@ st.markdown("""
     * {
         font-family: 'Inter', sans-serif;
     }
-        /* FIX: Force all text in the main content area to be dark if background is light */
-    .stApp > header, .stApp > div {
-        color: #333333; /* Dark text for all general content */
-    }
-    /* Specifically target elements that Streamlit renders as inputs/containers in the main body */
-    .stTextInput > div > div > input,
-    .stTextArea > div > textarea,
-    .stEmpty {
-        background-color: white !important; /* Force a white background */
-        color: #333333 !important; /* Force dark text */
-    }
-    
     
     /* Hide Streamlit Branding */
     #MainMenu {visibility: hidden;}
@@ -631,19 +619,13 @@ if not predict_btn and not quick_btn:
 ]''', language='json')
 
 # ============================================================================
-# FOOTER
-# ============================================================================
-
-st.markdown("""
-<div class="custom-footer">
-    <h3 style="color: #667eea;">🦠 EchoLens</h3>
+@@ -614,8 +628,7 @@
     <p>Helping humanity prepare for future pandemics through AI-powered predictions</p>
     <p style="font-size: 0.9rem; color: #999;">
         Built by <a href="https://github.com/A-P-U-R-B-O" target="_blank" style="color: #667eea; text-decoration: none;">@A-P-U-R-B-O</a> • 
+        Powered by Groq API (Llama 3.1 70B) • 
+        2025-11-08
         Powered by Groq API
     </p>
     <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;">
         ⚠️ Disclaimer: This is a research tool. Consult epidemiologists for public health decisions.
-    </p>
-</div>
-""", unsafe_allow_html=True)
