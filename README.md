@@ -487,7 +487,7 @@ If EchoLens helps you or your organization, please ⭐ star this repository!
 ### 🦠 EchoLens - Predicting Tomorrow's Pandemics Today
 
 **Built by [@A-P-U-R-B-O](https://github.com/A-P-U-R-B-O)**  
-**Powered by Groq API (Llama 3.1 70B)**  
+**Powered by Groq API (OpenAI/GPT-OSS 120B)**  
 **Last Updated: 2025-11-08**
 
 ---
