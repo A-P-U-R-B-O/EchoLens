@@ -4,7 +4,8 @@
     "period": "1346-1353",
     "pathogen": "Yersinia pestis (bacterium)",
     "deaths": "75–200 million",
-    "mortality_rate": "30-60% of European population",
+    "mortality_rate_display": "30-60% of European population",
+    "mortality_rate_value": 45,
     "transmission": "Fleas on rats, respiratory droplets (pneumonic plague)",
     "lessons": [
       "Quarantine measures originated",
@@ -16,7 +17,8 @@
     "period": "1918-1920",
     "pathogen": "Influenza A virus subtype H1N1",
     "deaths": "20–50 million",
-    "mortality_rate": "10-20% of infected",
+    "mortality_rate_display": "10-20% of infected",
+    "mortality_rate_value": 15,
     "transmission": "Respiratory droplets, airborne",
     "lessons": [
       "Importance of public health messaging",
@@ -28,7 +30,8 @@
     "period": "Throughout history (Eradicated 1980)",
     "pathogen": "Variola virus",
     "deaths": "300–500 million (in last 12,000 years)",
-    "mortality_rate": "30% (Variola major)",
+    "mortality_rate_display": "30% (Variola major)",
+    "mortality_rate_value": 30,
     "transmission": "Respiratory droplets, direct contact with rash/fluids",
     "lessons": [
       "Proved the power of global vaccination",
@@ -40,7 +43,8 @@
     "period": "541-549 AD (with recurrences)",
     "pathogen": "Yersinia pestis (bacterium)",
     "deaths": "25–50 million",
-    "mortality_rate": "25-60% of affected populations",
+    "mortality_rate_display": "25-50% of affected populations",
+    "mortality_rate_value": 37,
     "transmission": "Fleas on rats",
     "lessons": [
       "Demonstrated the impact of disease on great empires",
@@ -52,7 +56,8 @@
     "period": "1852–1860",
     "pathogen": "Vibrio cholerae (bacterium)",
     "deaths": "1+ million",
-    "mortality_rate": "High if untreated (can exceed 50%)",
+    "mortality_rate_display": "50-70% if untreated (Case Fatality Rate)",
+    "mortality_rate_value": 60,
     "transmission": "Contaminated water and food (fecal-oral route)",
     "lessons": [
       "Established the link between contaminated water and disease (John Snow's work)",
@@ -64,7 +69,8 @@
     "period": "1981–present",
     "pathogen": "Human Immunodeficiency Virus (HIV)",
     "deaths": "36 million (cumulative)",
-    "mortality_rate": "Near 100% before effective antiretroviral therapy (ART)",
+    "mortality_rate_display": "Near 100% before effective ART (Survival 3 years post-AIDS diagnosis)",
+    "mortality_rate_value": 100,
     "transmission": "Bodily fluids (sexual contact, shared needles, mother-to-child)",
     "lessons": [
       "Crucial role of sustained global health funding",
@@ -76,7 +82,8 @@
     "period": "165–180 AD",
     "pathogen": "Likely Smallpox or Measles virus",
     "deaths": "5–10 million",
-    "mortality_rate": "Estimated 25-33% of the Roman army",
+    "mortality_rate_display": "Estimated 10% of empire population; 25% of infected",
+    "mortality_rate_value": 10,
     "transmission": "Respiratory droplets, close contact",
     "lessons": [
       "Disease spread by returning military forces",
@@ -88,7 +95,8 @@
     "period": "1957-1958",
     "pathogen": "Influenza A virus subtype H2N2",
     "deaths": "1–4 million",
-    "mortality_rate": "Less than 1%",
+    "mortality_rate_display": "Less than 1% (Excess mortality rate ~0.19%)",
+    "mortality_rate_value": 0.19,
     "transmission": "Respiratory droplets, airborne",
     "lessons": [
       "Importance of rapid vaccine development",
@@ -98,10 +106,11 @@
   {
     "name": "Cocoliztli Epidemics",
     "period": "1545–1548 (and later outbreaks)",
-    "pathogen": "Unknown (Possibly *Salmonella enterica* Paratyphi C, or a viral hemorrhagic fever)",
+    "pathogen": "Unknown (Likely *Salmonella enterica* Paratyphi C)",
     "deaths": "5–15 million",
-    "mortality_rate": "Up to 80% of native Mexican population in some areas",
-    "transmission": "Likely fecal-oral or vector-borne (e.g., lice/ticks) or a mix",
+    "mortality_rate_display": "Up to 80% of native Mexican population",
+    "mortality_rate_value": 80,
+    "transmission": "Likely fecal-oral or vector-borne",
     "lessons": [
       "Devastating impact of Old World diseases on New World populations",
       "Highlighting the role of lack of immunity in mortality"
@@ -112,7 +121,8 @@
     "period": "1918–1922 (Russian Civil War peak)",
     "pathogen": "Rickettsia prowazekii (bacterium)",
     "deaths": "2–3 million (in Russia 1918–1922)",
-    "mortality_rate": "20-60% untreated",
+    "mortality_rate_display": "10-60% untreated",
+    "mortality_rate_value": 35,
     "transmission": "Body lice feces rubbed into skin or inhaled",
     "lessons": [
       "Disease thrives in conditions of war and poverty",
