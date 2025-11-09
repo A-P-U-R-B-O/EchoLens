@@ -1,0 +1,132 @@
+[
+  {
+    "name": "COVID-19",
+    "start_year": 2019,
+    "end_year": null,
+    "pathogen": "SARS-CoV-2",
+    "type": "Viral",
+    "death_estimate": "6,900,000+",
+    "regions_affected": ["Worldwide"],
+    "description": "A global pandemic caused by the novel coronavirus, leading to millions of deaths and major economic, social, and health impacts.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/COVID-19_pandemic"
+    ]
+  },
+  {
+    "name": "Spanish Flu",
+    "start_year": 1918,
+    "end_year": 1920,
+    "pathogen": "H1N1 influenza A virus",
+    "type": "Viral",
+    "death_estimate": "17,000,000–50,000,000",
+    "regions_affected": ["Worldwide"],
+    "description": "An unusually deadly influenza pandemic, the first of the two pandemics involving H1N1 influenza virus.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Spanish_flu"
+    ]
+  },
+  {
+    "name": "Black Death",
+    "start_year": 1346,
+    "end_year": 1353,
+    "pathogen": "Yersinia pestis",
+    "type": "Bacterial",
+    "death_estimate": "75,000,000–200,000,000",
+    "regions_affected": ["Europe", "Asia", "North Africa"],
+    "description": "One of the most devastating pandemics in human history, resulting in the deaths of millions in Eurasia and North Africa.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Black_Death"
+    ]
+  },
+  {
+    "name": "Third Plague Pandemic",
+    "start_year": 1855,
+    "end_year": 1960,
+    "pathogen": "Yersinia pestis",
+    "type": "Bacterial",
+    "death_estimate": "12,000,000",
+    "regions_affected": ["China", "India", "Worldwide"],
+    "description": "A major bubonic plague pandemic originating in China, resulting in millions of deaths globally, especially in India and China.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Third_plague_pandemic"
+    ]
+  },
+  {
+    "name": "HIV/AIDS pandemic",
+    "start_year": 1981,
+    "end_year": null,
+    "pathogen": "HIV",
+    "type": "Viral",
+    "death_estimate": "40,400,000+",
+    "regions_affected": ["Worldwide"],
+    "description": "A persistent global pandemic caused by the human immunodeficiency virus (HIV) leading to acquired immunodeficiency syndrome (AIDS).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/HIV/AIDS_pandemic"
+    ]
+  },
+  {
+    "name": "Asian Flu",
+    "start_year": 1957,
+    "end_year": 1958,
+    "pathogen": "H2N2 influenza A virus",
+    "type": "Viral",
+    "death_estimate": "1,000,000–2,000,000",
+    "regions_affected": ["Worldwide"],
+    "description": "An influenza pandemic caused by a new strain of H2N2 virus that began in East Asia and spread globally.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1957–1958_influenza_pandemic"
+    ]
+  },
+  {
+    "name": "Hong Kong Flu",
+    "start_year": 1968,
+    "end_year": 1970,
+    "pathogen": "H3N2 influenza A virus",
+    "type": "Viral",
+    "death_estimate": "1,000,000–4,000,000",
+    "regions_affected": ["Worldwide"],
+    "description": "A flu pandemic caused by a new strain of H3N2 virus, which killed millions globally.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hong_Kong_flu"
+    ]
+  },
+  {
+    "name": "Russian Flu",
+    "start_year": 1889,
+    "end_year": 1890,
+    "pathogen": "H3N8 influenza A virus (postulated)",
+    "type": "Viral",
+    "death_estimate": "1,000,000",
+    "regions_affected": ["Worldwide"],
+    "description": "The first true pandemic of the modern era, caused by influenza or perhaps a coronavirus, according to some hypotheses.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1889–1890_flu_pandemic"
+    ]
+  },
+  {
+    "name": "Antonine Plague",
+    "start_year": 165,
+    "end_year": 180,
+    "pathogen": "Unknown (possibly smallpox or measles)",
+    "type": "Unknown",
+    "death_estimate": "5,000,000+",
+    "regions_affected": ["Roman Empire"],
+    "description": "A plague of unknown disease that affected the Roman Empire, possibly smallpox or measles.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Antonine_Plague"
+    ]
+  },
+  {
+    "name": "Plague of Justinian",
+    "start_year": 541,
+    "end_year": 549,
+    "pathogen": "Yersinia pestis",
+    "type": "Bacterial",
+    "death_estimate": "15,000,000–100,000,000",
+    "regions_affected": ["Eastern Roman Empire (Byzantine)", "Mediterranean Basin"],
+    "description": "A pandemic that affected the Byzantine Empire and Mediterranean ports, considered to be the first recorded occurrence of bubonic plague.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Plague_of_Justinian"
+    ]
+  }
+    ]
