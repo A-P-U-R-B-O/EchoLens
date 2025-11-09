@@ -489,10 +489,6 @@ Powered by Groq API (Llama 3.1 70B)
 # HISTORICAL DATA SECTION
 # ============================================================================
 
-if not predict_btn and not quick_btn:
-    st.markdown("---")
-    st.markdown("## 📚 Historical Pandemic Database")
-    
     # Load historical data
     # Create a dummy data structure if the file doesn't exist to prevent a full crash
     pandemics = []
