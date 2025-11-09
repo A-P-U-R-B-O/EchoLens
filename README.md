@@ -52,9 +52,6 @@
 - **Historical Database** - Interactive tabs for Black Death, Spanish Flu, SARS, COVID-19
 - **Comparison Graphs** - Side-by-side pandemic mortality rate analysis
 
-### ⚡ Dual Analysis Modes
-- **Quick Risk Check** - Instant assessment in under 10 seconds
-- **Full Prediction** - Comprehensive analysis with detailed recommendations
 
 ### 📥 Export & Share
 - **Download Reports** - Export predictions as text files
@@ -99,37 +96,13 @@ streamlit run app.py
 
 Visit: **http://localhost:8501**
 
----
-
-## 📁 Project Structure
-
-```
-echolens/
-├── app.py                      # Main Streamlit dashboard
-├── groq_client.py              # Groq API client wrapper
-├── data/
-│   └── pandemics.json          # Historical pandemic database
-├── .streamlit/
-│   └── config.toml             # Streamlit configuration
-├── requirements.txt            # Python dependencies
-├── .env.example                # Environment variables template
-├── render.yaml                 # Render.com deployment config
-├── Dockerfile                  # Docker containerization
-├── runtime.txt                 # Python version specification
-├── .gitignore                  # Git ignore rules
-└── README.md                   # This file
-```
-
-**Total Files:** 5 core files (minimal and clean!)
-
----
 
 ## 🛠️ Technology Stack
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | **Frontend** | Streamlit 1.28+ | Interactive web dashboard |
-| **AI Model** | Groq API (Llama 3.1 70B) | Fast LLM inference for predictions |
+| **AI Model** | Groq API (OpenAI/GPT-OSS 120B) | Fast LLM inference for predictions |
 | **Visualization** | Plotly 5.17+ | Interactive charts and gauges |
 | **Backend** | Python 3.11 | Core application logic |
 | **Deployment** | Render / Streamlit Cloud | Cloud hosting |
