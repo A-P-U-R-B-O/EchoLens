@@ -1,142 +1,122 @@
 [
   {
-    "name": "COVID-19",
-    "period": "2019–present",
-    "start_year": 2019,
-    "end_year": null,
-    "pathogen": "SARS-CoV-2",
-    "type": "Viral",
-    "death_estimate": "6,900,000+",
-    "regions_affected": ["Worldwide"],
-    "description": "A global pandemic caused by the novel coronavirus, leading to millions of deaths and major economic, social, and health impacts.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/COVID-19_pandemic"
+    "name": "Black Death",
+    "period": "1346-1353",
+    "pathogen": "Yersinia pestis (bacterium)",
+    "deaths": "75–200 million",
+    "mortality_rate": "30-60% of European population",
+    "transmission": "Fleas on rats, respiratory droplets (pneumonic plague)",
+    "lessons": [
+      "Quarantine measures originated",
+      "Profound social and economic change"
     ]
   },
   {
     "name": "Spanish Flu",
-    "period": "1918–1920",
-    "start_year": 1918,
-    "end_year": 1920,
-    "pathogen": "H1N1 influenza A virus",
-    "type": "Viral",
-    "death_estimate": "17,000,000–50,000,000",
-    "regions_affected": ["Worldwide"],
-    "description": "An unusually deadly influenza pandemic, the first of the two pandemics involving H1N1 influenza virus.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Spanish_flu"
+    "period": "1918-1920",
+    "pathogen": "Influenza A virus subtype H1N1",
+    "deaths": "20–50 million",
+    "mortality_rate": "10-20% of infected",
+    "transmission": "Respiratory droplets, airborne",
+    "lessons": [
+      "Importance of public health messaging",
+      "Severe impact on young adults"
     ]
   },
   {
-    "name": "Black Death",
-    "period": "1346–1353",
-    "start_year": 1346,
-    "end_year": 1353,
-    "pathogen": "Yersinia pestis",
-    "type": "Bacterial",
-    "death_estimate": "75,000,000–200,000,000",
-    "regions_affected": ["Europe", "Asia", "North Africa"],
-    "description": "One of the most devastating pandemics in human history, resulting in the deaths of millions in Eurasia and North Africa.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Black_Death"
-    ]
-  },
-  {
-    "name": "Third Plague Pandemic",
-    "period": "1855–1960",
-    "start_year": 1855,
-    "end_year": 1960,
-    "pathogen": "Yersinia pestis",
-    "type": "Bacterial",
-    "death_estimate": "12,000,000",
-    "regions_affected": ["China", "India", "Worldwide"],
-    "description": "A major bubonic plague pandemic originating in China, resulting in millions of deaths globally, especially in India and China.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Third_plague_pandemic"
-    ]
-  },
-  {
-    "name": "HIV/AIDS pandemic",
-    "period": "1981–present",
-    "start_year": 1981,
-    "end_year": null,
-    "pathogen": "HIV",
-    "type": "Viral",
-    "death_estimate": "40,400,000+",
-    "regions_affected": ["Worldwide"],
-    "description": "A persistent global pandemic caused by the human immunodeficiency virus (HIV) leading to acquired immunodeficiency syndrome (AIDS).",
-    "sources": [
-      "https://en.wikipedia.org/wiki/HIV/AIDS_pandemic"
-    ]
-  },
-  {
-    "name": "Asian Flu",
-    "period": "1957–1958",
-    "start_year": 1957,
-    "end_year": 1958,
-    "pathogen": "H2N2 influenza A virus",
-    "type": "Viral",
-    "death_estimate": "1,000,000–2,000,000",
-    "regions_affected": ["Worldwide"],
-    "description": "An influenza pandemic caused by a new strain of H2N2 virus that began in East Asia and spread globally.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/1957–1958_influenza_pandemic"
-    ]
-  },
-  {
-    "name": "Hong Kong Flu",
-    "period": "1968–1970",
-    "start_year": 1968,
-    "end_year": 1970,
-    "pathogen": "H3N2 influenza A virus",
-    "type": "Viral",
-    "death_estimate": "1,000,000–4,000,000",
-    "regions_affected": ["Worldwide"],
-    "description": "A flu pandemic caused by a new strain of H3N2 virus, which killed millions globally.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Hong_Kong_flu"
-    ]
-  },
-  {
-    "name": "Russian Flu",
-    "period": "1889–1890",
-    "start_year": 1889,
-    "end_year": 1890,
-    "pathogen": "H3N8 influenza A virus (postulated)",
-    "type": "Viral",
-    "death_estimate": "1,000,000",
-    "regions_affected": ["Worldwide"],
-    "description": "The first true pandemic of the modern era, caused by influenza or perhaps a coronavirus, according to some hypotheses.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/1889–1890_flu_pandemic"
-    ]
-  },
-  {
-    "name": "Antonine Plague",
-    "period": "165–180",
-    "start_year": 165,
-    "end_year": 180,
-    "pathogen": "Unknown (possibly smallpox or measles)",
-    "type": "Unknown",
-    "death_estimate": "5,000,000+",
-    "regions_affected": ["Roman Empire"],
-    "description": "A plague of unknown disease that affected the Roman Empire, possibly smallpox or measles.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Antonine_Plague"
+    "name": "Smallpox",
+    "period": "Throughout history (Eradicated 1980)",
+    "pathogen": "Variola virus",
+    "deaths": "300–500 million (in last 12,000 years)",
+    "mortality_rate": "30% (Variola major)",
+    "transmission": "Respiratory droplets, direct contact with rash/fluids",
+    "lessons": [
+      "Proved the power of global vaccination",
+      "First disease officially eradicated by human intervention"
     ]
   },
   {
     "name": "Plague of Justinian",
-    "period": "541–549",
-    "start_year": 541,
-    "end_year": 549,
-    "pathogen": "Yersinia pestis",
-    "type": "Bacterial",
-    "death_estimate": "15,000,000–100,000,000",
-    "regions_affected": ["Eastern Roman Empire (Byzantine)", "Mediterranean Basin"],
-    "description": "A pandemic that affected the Byzantine Empire and Mediterranean ports, considered to be the first recorded occurrence of bubonic plague.",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Plague_of_Justinian"
+    "period": "541-549 AD (with recurrences)",
+    "pathogen": "Yersinia pestis (bacterium)",
+    "deaths": "25–50 million",
+    "mortality_rate": "25-60% of affected populations",
+    "transmission": "Fleas on rats",
+    "lessons": [
+      "Demonstrated the impact of disease on great empires",
+      "Highlighting trade routes as vectors for spread"
+    ]
+  },
+  {
+    "name": "Third Cholera Pandemic",
+    "period": "1852–1860",
+    "pathogen": "Vibrio cholerae (bacterium)",
+    "deaths": "1+ million",
+    "mortality_rate": "High if untreated (can exceed 50%)",
+    "transmission": "Contaminated water and food (fecal-oral route)",
+    "lessons": [
+      "Established the link between contaminated water and disease (John Snow's work)",
+      "Pioneered modern epidemiology and public sanitation"
+    ]
+  },
+  {
+    "name": "HIV/AIDS Pandemic",
+    "period": "1981–present",
+    "pathogen": "Human Immunodeficiency Virus (HIV)",
+    "deaths": "36 million (cumulative)",
+    "mortality_rate": "Near 100% before effective antiretroviral therapy (ART)",
+    "transmission": "Bodily fluids (sexual contact, shared needles, mother-to-child)",
+    "lessons": [
+      "Crucial role of sustained global health funding",
+      "Impact of social stigma on public health efforts"
+    ]
+  },
+  {
+    "name": "Antonine Plague",
+    "period": "165–180 AD",
+    "pathogen": "Likely Smallpox or Measles virus",
+    "deaths": "5–10 million",
+    "mortality_rate": "Estimated 25-33% of the Roman army",
+    "transmission": "Respiratory droplets, close contact",
+    "lessons": [
+      "Disease spread by returning military forces",
+      "Weakened the Roman Empire"
+    ]
+  },
+  {
+    "name": "Asian Flu",
+    "period": "1957-1958",
+    "pathogen": "Influenza A virus subtype H2N2",
+    "deaths": "1–4 million",
+    "mortality_rate": "Less than 1%",
+    "transmission": "Respiratory droplets, airborne",
+    "lessons": [
+      "Importance of rapid vaccine development",
+      "Showcased the potential for quick global spread via modern travel"
+    ]
+  },
+  {
+    "name": "Cocoliztli Epidemics",
+    "period": "1545–1548 (and later outbreaks)",
+    "pathogen": "Unknown (Possibly *Salmonella enterica* Paratyphi C, or a viral hemorrhagic fever)",
+    "deaths": "5–15 million",
+    "mortality_rate": "Up to 80% of native Mexican population in some areas",
+    "transmission": "Likely fecal-oral or vector-borne (e.g., lice/ticks) or a mix",
+    "lessons": [
+      "Devastating impact of Old World diseases on New World populations",
+      "Highlighting the role of lack of immunity in mortality"
+    ]
+  },
+  {
+    "name": "Typhus Epidemics (WW1-WW2)",
+    "period": "1918–1922 (Russian Civil War peak)",
+    "pathogen": "Rickettsia prowazekii (bacterium)",
+    "deaths": "2–3 million (in Russia 1918–1922)",
+    "mortality_rate": "20-60% untreated",
+    "transmission": "Body lice feces rubbed into skin or inhaled",
+    "lessons": [
+      "Disease thrives in conditions of war and poverty",
+      "Crucial role of hygiene and sanitation in control"
     ]
   }
 ]
