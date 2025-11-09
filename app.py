@@ -244,12 +244,6 @@ with st.sidebar:
         type="primary"
     )
     
-    # Quick analysis button
-    quick_btn = st.button(
-        "⚡ Quick Risk Check",
-        use_container_width=True
-    )
-    
     st.markdown("---")
     
     # Info
@@ -284,33 +278,6 @@ except ValueError as e:
     """)
     st.stop()
 
-# Quick Risk Check
-if quick_btn:
-    st.markdown("### ⚡ Quick Risk Assessment")
-    
-    with st.spinner("🤖 Analyzing risk level..."):
-        try:
-            quick_result = ai.get_quick_risk(region, current_cases)
-            
-            col1, col2 = st.columns([2, 1])
-            
-            with col1:
-                # FIX: Use HTML for outer container, st.markdown for content
-                st.markdown('<div class="info-card">', unsafe_allow_html=True)
-                st.markdown(f'<h3>📊 Risk Summary for {region}</h3>', unsafe_allow_html=True)
-                st.markdown('<div class="analysis-text">', unsafe_allow_html=True)
-                st.markdown(quick_result) # Render markdown/LaTeX correctly
-                st.markdown('</div></div>', unsafe_allow_html=True)
-            
-            with col2:
-                st.metric("Active Cases", f"{current_cases:,}")
-                st.metric("Forecast Period", f"{forecast_days} days")
-            
-            st.success("✅ Quick assessment complete!")
-            
-        except Exception as e:
-            st.error(f"❌ Error: {str(e)}")
-            st.info("💡 Check your Groq API key, dependencies (httpx fix), and internet connection.")
 
 # Full Prediction
 if predict_btn:
