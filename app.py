@@ -486,93 +486,106 @@ Powered by Groq API (Llama 3.1 70B)
         st.info("💡 Make sure your Groq API key is valid and you have an active internet connection.")
 
 # ============================================================================
-# HISTORICAL DATA SECTION
+# HISTORICAL DATA SECTION (FIXED)
 # ============================================================================
 
-    # Load historical data
-    # Create a dummy data structure if the file doesn't exist to prevent a full crash
+# Load historical data
+pandemics = []
+try:
+    # Assuming the fixed JSON file is also saved here
+    # You need to make sure the fixed JSON file is saved as 'data/pandemics.json'
+    with open('data/pandemics.json', 'r') as f:
+        pandemics = json.load(f)
+except FileNotFoundError:
+    st.info("📁 No historical data found. See Sample Data Structure below.")
     pandemics = []
-    try:
-        with open('data/pandemics.json', 'r') as f:
-            pandemics = json.load(f)
-    except FileNotFoundError:
-        st.info("📁 No historical data found. See Sample Data Structure below.")
-        pandemics = []
 
-    if pandemics:
-        # Create tabs for each pandemic
-        tabs = st.tabs([p['name'] for p in pandemics])
-        
-        for tab, pandemic in zip(tabs, pandemics):
-            with tab:
-                col1, col2 = st.columns([2, 1])
-                
-                with col1:
-                    st.markdown(f"### {pandemic['name']}")
-                    st.markdown(f"**Period:** {pandemic['period']}")
-                    st.markdown(f"**Pathogen:** {pandemic['pathogen']}")
-                    st.markdown(f"**Deaths:** {pandemic['deaths']}")
-                    st.markdown(f"**Transmission:** {pandemic['transmission']}")
-                    
-                    if 'lessons' in pandemic:
-                        st.markdown("**Key Lessons:**")
-                        for lesson in pandemic['lessons']:
-                            st.markdown(f"- {lesson}")
-                
-                with col2:
-                    # Simple visualization
-                    fig = go.Figure(go.Indicator(
-                        mode="number",
-                        value=pandemic.get('mortality_rate', 0),
-                        title={'text': "Mortality Rate"},
-                        number={'suffix': "%"},
-                        domain={'x': [0, 1], 'y': [0, 1]}
-                    ))
-                    fig.update_layout(height=200, margin=dict(l=20, r=20, t=50, b=20))
-                    st.plotly_chart(fig, use_container_width=True)
-        
-        # Comparison chart
-        st.markdown("---")
-        st.markdown("### 📊 Pandemic Comparison")
-        
-        # Create comparison data
-        names = [p['name'] for p in pandemics]
-        mortality_rates = [p.get('mortality_rate', 0) for p in pandemics]
-        
-        fig3 = go.Figure(data=[
-            go.Bar(
-                x=names,
-                y=mortality_rates,
-                marker=dict(
-                    color=mortality_rates,
-                    colorscale='Reds',
-                    showscale=True
-                ),
-                text=mortality_rates,
-                texttemplate='%{text}%',
-                textposition='outside'
-            )
-        ])
-        
-        fig3.update_layout(
-            title="Historical Pandemic Mortality Rates",
-            xaxis_title="Pandemic",
-            yaxis_title="Mortality Rate (%)",
-            height=400,
-            showlegend=False
-        )
-        
-        st.plotly_chart(fig3, use_container_width=True)
+if pandemics:
+    # Create tabs for each pandemic
+    tabs = st.tabs([p['name'] for p in pandemics])
     
-    # Show sample structure whether data was found or not
-    with st.expander("📖 Sample Data Structure"):
-        st.code('''[
+    for tab, pandemic in zip(tabs, pandemics):
+        with tab:
+            col1, col2 = st.columns([2, 1])
+            
+            with col1:
+                st.markdown(f"### {pandemic['name']}")
+                st.markdown(f"**Period:** {pandemic['period']}")
+                st.markdown(f"**Pathogen:** {pandemic['pathogen']}")
+                st.markdown(f"**Deaths:** {pandemic['deaths']}")
+                st.markdown(f"**Transmission:** {pandemic['transmission']}")
+                
+                if 'lessons' in pandemic:
+                    st.markdown("**Key Lessons:**")
+                    for lesson in pandemic['lessons']:
+                        st.markdown(f"- {lesson}")
+            
+            with col2:
+                # Simple visualization (Indicator)
+                # FIX 1: Use 'mortality_rate_value' (the number) and use the display field for title if needed
+                mortality_value = pandemic.get('mortality_rate_value', 0)
+                mortality_display = pandemic.get('mortality_rate_display', 'N/A')
+                
+                fig = go.Figure(go.Indicator(
+                    mode="number",
+                    value=mortality_value,
+                    # Display the value as a percentage
+                    title={'text': "Mortality Rate (%)"},
+                    number={'suffix': "%"},
+                    domain={'x': [0, 1], 'y': [0, 1]}
+                ))
+                fig.update_layout(height=200, margin=dict(l=20, r=20, t=50, b=20))
+                st.plotly_chart(fig, use_container_width=True)
+    
+    # Comparison chart
+    st.markdown("---")
+    st.markdown("### 📊 Pandemic Comparison")
+    
+    # Create comparison data
+    names = [p['name'] for p in pandemics]
+    
+    # FIX 2: Use 'mortality_rate_value' AND divide by 100.0 for the bar chart
+    # The bar chart's Y-axis is scaled from -1 to 1, so the data must be 0.x.
+    mortality_rates_decimal = [p.get('mortality_rate_value', 0) / 100.0 for p in pandemics]
+    # Keep the original integer rates for the text label on the bar
+    mortality_rates_percent = [p.get('mortality_rate_value', 0) for p in pandemics]
+    
+    fig3 = go.Figure(data=[
+        go.Bar(
+            x=names,
+            y=mortality_rates_decimal, # Use the scaled decimal value (e.g., 0.45)
+            marker=dict(
+                color=mortality_rates_decimal, # Color scale based on decimal
+                colorscale='Reds',
+                showscale=True
+            ),
+            text=mortality_rates_percent, # Use the integer percent for the label (e.g., 45)
+            texttemplate='%{text}%',
+            textposition='outside'
+        )
+    ])
+    
+    fig3.update_layout(
+        title="Historical Pandemic Mortality Rates",
+        xaxis_title="Pandemic",
+        # The Y-axis title should reflect the decimal scale, or you can change the axis range
+        yaxis_title="Mortality Rate (Decimal)", 
+        height=400,
+        showlegend=False
+    )
+    
+    st.plotly_chart(fig3, use_container_width=True)
+
+# Show sample structure whether data was found or not
+with st.expander("📖 Sample Data Structure"):
+    st.code('''[
 {
 "name": "COVID-19",
 "period": "2019-2023",
 "pathogen": "SARS-CoV-2",
 "deaths": "6.9+ million",
-"mortality_rate": 2,
+"mortality_rate_value": 2, // <--- NOTE THE NEW FIELD
+"mortality_rate_display": "2%",
 "transmission": "Respiratory droplets, airborne",
 "lessons": [
   "Early detection crucial",
@@ -580,6 +593,7 @@ Powered by Groq API (Llama 3.1 70B)
 ]
 }
 ]''', language='json')
+    
 
 # ============================================================================
 # FOOTER
