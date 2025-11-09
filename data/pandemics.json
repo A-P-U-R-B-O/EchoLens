@@ -1,6 +1,7 @@
 [
   {
     "name": "COVID-19",
+    "period": "2019–present",
     "start_year": 2019,
     "end_year": null,
     "pathogen": "SARS-CoV-2",
@@ -14,6 +15,7 @@
   },
   {
     "name": "Spanish Flu",
+    "period": "1918–1920",
     "start_year": 1918,
     "end_year": 1920,
     "pathogen": "H1N1 influenza A virus",
@@ -27,6 +29,7 @@
   },
   {
     "name": "Black Death",
+    "period": "1346–1353",
     "start_year": 1346,
     "end_year": 1353,
     "pathogen": "Yersinia pestis",
@@ -40,6 +43,7 @@
   },
   {
     "name": "Third Plague Pandemic",
+    "period": "1855–1960",
     "start_year": 1855,
     "end_year": 1960,
     "pathogen": "Yersinia pestis",
@@ -53,6 +57,7 @@
   },
   {
     "name": "HIV/AIDS pandemic",
+    "period": "1981–present",
     "start_year": 1981,
     "end_year": null,
     "pathogen": "HIV",
@@ -66,6 +71,7 @@
   },
   {
     "name": "Asian Flu",
+    "period": "1957–1958",
     "start_year": 1957,
     "end_year": 1958,
     "pathogen": "H2N2 influenza A virus",
@@ -79,6 +85,7 @@
   },
   {
     "name": "Hong Kong Flu",
+    "period": "1968–1970",
     "start_year": 1968,
     "end_year": 1970,
     "pathogen": "H3N2 influenza A virus",
@@ -92,6 +99,7 @@
   },
   {
     "name": "Russian Flu",
+    "period": "1889–1890",
     "start_year": 1889,
     "end_year": 1890,
     "pathogen": "H3N8 influenza A virus (postulated)",
@@ -105,6 +113,7 @@
   },
   {
     "name": "Antonine Plague",
+    "period": "165–180",
     "start_year": 165,
     "end_year": 180,
     "pathogen": "Unknown (possibly smallpox or measles)",
@@ -118,6 +127,7 @@
   },
   {
     "name": "Plague of Justinian",
+    "period": "541–549",
     "start_year": 541,
     "end_year": 549,
     "pathogen": "Yersinia pestis",
@@ -129,4 +139,4 @@
       "https://en.wikipedia.org/wiki/Plague_of_Justinian"
     ]
   }
-    ]
+]
