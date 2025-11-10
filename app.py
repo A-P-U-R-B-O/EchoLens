@@ -197,7 +197,7 @@ st.markdown("""
     <h1>🦠 EchoLens</h1>
     <p>AI-Powered Pandemic Prediction System</p>
     <p style="font-size: 0.9rem; opacity: 0.8;">
-        Trained on Black Death • Spanish Flu • SARS • COVID-19
+        Trained on Black Death • Spanish Flu • SARS • COVID-19 and 100+ more diseases 
     </p>
 </div>
 """, unsafe_allow_html=True)
